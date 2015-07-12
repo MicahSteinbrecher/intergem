@@ -1,0 +1,46 @@
+doctype html
+html
+    head
+        title= "Real time web chat"
+        script(src='/chat.js')
+        script(src='/socket.io/socket.io.js')
+        script(src='http://code.jquery.com/jquery-1.6.3.min.js')
+        script(src='/cycle.js')
+        link(href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css')
+        link(rel='stylesheet', href='/style.css')
+    body
+        #root
+            #banner(style='border-bottom: 1px solid black;')
+                p.h1 Intergem
+                a(href='/dummy.html') Engagement
+                a(href='/dummy.html') Jewelery
+                a(href='/dummy.html') Collections
+                a(href='/dummy.html') Watches
+                a(href='/dummy.html') Accesories
+            a.chat chat with us
+            a.hideChat(style='visibility:hidden;') hide chat
+            #content
+            .controls
+                | Name: 
+                input#name(style='width:200px;')
+                br                
+                input#send(type='button', value='send')
+                input#field(style='width:200px;')
+            #tile1
+                img.bgM(src='/images/ring1.jpg')
+                img.bgM(src='/images/ring2.jpg')
+                img.bgM(src='/images/ring3.jpg')
+            script(type='text/javascript').
+                $('#tile1').cycle({
+                fx: 'fade',
+                pager: '#smallnav', 
+                pause:   1, 
+                speed: 800,
+                timeout:  3500 })
+                $('.chat').click(function() {
+                event.preventDefault();
+                $('#content, .controls, .hideChat').css("visibility", "visible");})
+                 $('.hideChat').click(function() {
+                event.preventDefault();
+                $('#content, .controls, .hideChat').css("visibility", "hidden");})
